@@ -82,5 +82,5 @@ ax.set_title("Feature Impact on Price")
 st.pyplot(fig)
 
 # Optional: show raw data
-if st.checkbox("Show Raw Dataset (First 5 entries)"):
-    st.dataframe((df.drop(columns=['extra_features']).head()))
+if st.checkbox("Show Raw Dataset Overview"):
+    st.dataframe((df.drop(columns=['extra_features']).head(10)))
