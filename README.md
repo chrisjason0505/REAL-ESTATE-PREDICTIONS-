@@ -3,7 +3,7 @@
 This is a machine learning-powered web app that predicts house prices per unit area based on features like house age, proximity to MRT, and more. The model was trained using **Linear Regression**, and the app was built using **Streamlit**.
 
 ### 🚀 Live App  
-👉 [Click here to try the app](https://z2broka8enjgqxzonlxzzd.streamlit.app/#predicted-price-per-unit-area)  
+👉 [Click here to try the app](https://lakfmgkctdab4xaz2zmvem.streamlit.app/)  
 
 
 ---
