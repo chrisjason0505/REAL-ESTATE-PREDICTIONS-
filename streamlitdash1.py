@@ -21,13 +21,13 @@ print(df.shape)  # Should print something like (n_rows, 8)
 
 # Rename columns correctly — make sure this list has exactly 8 names!
 df.columns = [
+    'sno',
     'transaction_date',
     'house_age',
     'distance_to_mrt',
     'convenience_stores',
     'latitude',
     'longitude',
-    'extra_features',
     'price_per_unit'
 ]
 
@@ -52,7 +52,7 @@ st.title("🏠 Real Estate Price Prediction Dashboard")
 st.sidebar.header("🔧 Input Property Features")
 house_age = st.sidebar.slider("House Age (years)", 0, 50, 10)
 distance_to_mrt = st.sidebar.slider("Distance to MRT (meters)", 0, 10000, 500)
-convenience_stores = st.sidebar.slider("Number of Nearby Convenience Stores", 0, 10, 2)
+convenience_stores = st.sidebar.slider("Number of Nearby Convenience Stores", 0,10,0)
 latitude = st.sidebar.number_input("Latitude", value=24.98)
 longitude = st.sidebar.number_input("Longitude", value=121.54)
 
@@ -73,6 +73,8 @@ coef_df = pd.DataFrame({
     'Feature': features,
     'Coefficient': model.coef_
 })
+
+print(coef_df)
 coef_df['abs_coef'] = coef_df['Coefficient'].abs()
 coef_df = coef_df.sort_values(by='abs_coef')
 
@@ -83,4 +85,4 @@ st.pyplot(fig)
 
 # Optional: show raw data
 if st.checkbox("Show Raw Dataset Overview"):
-    st.dataframe((df.drop(columns=['extra_features']).head(10)))
+    st.dataframe((df.drop(columns=['sno']).head(10)))
