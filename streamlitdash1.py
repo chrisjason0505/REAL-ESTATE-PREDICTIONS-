@@ -6,8 +6,8 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
-import seaborn as sns
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load dataset
 df = pd.read_csv("Real estate.csv")  # Make sure this file is in the same folder
@@ -78,11 +78,34 @@ print(coef_df)
 coef_df['abs_coef'] = coef_df['Coefficient'].abs()
 coef_df = coef_df.sort_values(by='abs_coef')
 
+
+
+# Apply dark style
+plt.style.use("dark_background")
+
 fig, ax = plt.subplots(figsize=(7, 4))
-sns.barplot(x='Coefficient', y='Feature', data=coef_df, palette='coolwarm', ax=ax, legend=False)
-ax.set_title("Feature Impact on Price")
+
+sns.barplot(
+    x='Coefficient', 
+    y='Feature', 
+    data=coef_df, 
+    palette='coolwarm', 
+    ax=ax, 
+    legend=False
+)
+
+# Adjust text & labels for readability
+ax.set_title("Feature Impact on Price", color="white", fontsize=14)
+ax.set_xlabel("Coefficient", color="white")
+ax.set_ylabel("Feature", color="white")
+
+# Make ticks visible on dark background
+ax.tick_params(colors="white")
+
 st.pyplot(fig)
+
 
 # Optional: show raw data
 if st.checkbox("Show Raw Dataset Overview"):
+
     st.dataframe((df.drop(columns=['sno']).head(10)))
