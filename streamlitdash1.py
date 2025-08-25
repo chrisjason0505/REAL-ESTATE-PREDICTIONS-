@@ -89,6 +89,7 @@ sns.barplot(
     x='Coefficient', 
     y='Feature', 
     data=coef_df, 
+    palette='coolwarm',
     ax=ax, 
     legend=False
 )
@@ -108,4 +109,5 @@ st.pyplot(fig)
 if st.checkbox("Show Raw Dataset Overview"):
 
     st.dataframe((df.drop(columns=['sno']).head(10)))
+
 
